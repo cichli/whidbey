@@ -76,7 +76,8 @@
 (defn update-print-fn!
   "Updates nREPL's printing configuration to use Puget. nREPL 0.6.0+ only."
   []
-  (some-> (find-var 'nrepl.middleware.print/*print-fn*)
+  (some-> (find-ns 'nrepl.middleware.print)
+          (ns-resolve '*print-fn*)
           (var-set render)))
 
 
